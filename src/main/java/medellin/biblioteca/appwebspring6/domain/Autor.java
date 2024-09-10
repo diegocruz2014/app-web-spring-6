@@ -51,4 +51,40 @@ public class Autor {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+
+    /*
+    // Còdigo generado por Intellig IDEA por la combinación de teclas Alt + Insert
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Autor autor = (Autor) o;
+        return getId() == autor.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(getId());
+    }
+    */
+
+    // Còdigo generado por Intellig IDEA por la combinación de teclas Alt + Insert
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Autor)) return false;
+
+        Autor autor = (Autor) o;
+
+        return getId() != null ? getId().equals(autor.getId()) : autor.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(getId());
+    }
+
+
+
 }
