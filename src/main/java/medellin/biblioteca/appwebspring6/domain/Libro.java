@@ -1,9 +1,9 @@
 package medellin.biblioteca.appwebspring6.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.awt.print.Book;
+import java.util.Set;
 
 @Entity
 public class Libro {
@@ -14,8 +14,23 @@ public class Libro {
     private String titulo;
     private String isbn;
 
-    // Getter and Setter
+    @ManyToMany
+    @JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "id_libro"),
+        inverseJoinColumns = @JoinColumn(name = "id_autor"))
+    
+    private Set<Autor> autores;
 
+    // Getter and Setter
+    // Relación con Autor
+    public Set<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autor> autores) {
+        this.autores = autores;
+    }
+
+    // Atributos (propiedades) de Book
     public long getId() {
         return id;
     }
