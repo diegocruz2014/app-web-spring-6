@@ -15,16 +15,16 @@ public class Autor {
     private String apellidos;
 
     @ManyToMany(mappedBy = "autores")
-    private Set<Book> books;
+    private Set<Libro> libros;
 
     // Getter and Setter
     // Relación con Book
-    public Set<Book> getBooks() {
-        return books;
+    public Set<Libro> getLibros() {
+        return libros;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setLibros(Set<Libro> libros) {
+        this.libros = libros;
     }
 
     // Atributos (propiedades) de Autor
