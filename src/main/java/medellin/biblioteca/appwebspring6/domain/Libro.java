@@ -54,4 +54,28 @@ public class Libro {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", autores=" + autores +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Libro libro = (Libro) o;
+        return getId() == libro.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(getId());
+    }
 }

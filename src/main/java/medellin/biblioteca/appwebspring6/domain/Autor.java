@@ -52,7 +52,16 @@ public class Autor {
         this.apellidos = apellidos;
     }
 
-    /*
+    @Override
+    public String toString() {
+        return "Autor{" +
+                "id=" + id +
+                ", nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", libros=" + libros +
+                '}';
+    }
+
     // Còdigo generado por Intellig IDEA por la combinación de teclas Alt + Insert
     @Override
     public boolean equals(Object o) {
@@ -67,8 +76,8 @@ public class Autor {
     public int hashCode() {
         return Long.hashCode(getId());
     }
-    */
 
+    /*
     // Còdigo generado por Intellig IDEA por la combinación de teclas Alt + Insert
     @Override
     public boolean equals(Object o) {
@@ -82,9 +91,8 @@ public class Autor {
 
     @Override
     public int hashCode() {
-        return Long.hashCode(getId());
+        return getId() != null ? getId().hashcode() : 0;
     }
-
-
+    */
 
 }
