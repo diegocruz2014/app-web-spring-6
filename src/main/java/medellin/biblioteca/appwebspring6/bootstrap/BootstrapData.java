@@ -55,7 +55,7 @@ public class BootstrapData implements CommandLineRunner {
         ericSaved.getLibros().add(dddSaved);
         rodSaved.getLibros().add(noEJBSaved);
 
-        // Verifiar la cuenta de los elementos almacenados
+        // Verificar la cuenta de los elementos almacenados
         System.out.println("En Bootstrap");
         System.out.println("Cuenta da Autores: " + autorRepository.count());
         System.out.println("Cuenta de Libros: " + libroRepository.count());
