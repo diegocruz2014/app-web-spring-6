@@ -2,7 +2,6 @@ package medellin.biblioteca.appwebspring6.domain;
 
 import jakarta.persistence.*;
 
-import java.awt.print.Book;
 import java.util.HashSet;
 import java.util.Set;
 

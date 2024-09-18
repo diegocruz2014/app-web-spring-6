@@ -2,7 +2,6 @@ package medellin.biblioteca.appwebspring6.domain;
 
 import jakarta.persistence.*;
 
-import java.awt.print.Book;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,10 +14,17 @@ public class Libro {
     private String titulo;
     private String isbn;
 
+    // Relación entre lIbro y Editorial (es de muchos libros a una sola editorial)
+    @ManyToOne
+    @JoinColumn(name = "id_editorial")
+
+    private Editorial editorial;
+
+    // Relación entre Libro y Autor (es de muchos a muchos)
     @ManyToMany
     @JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "id_libro"),
         inverseJoinColumns = @JoinColumn(name = "id_autor"))
-    
+
     private Set<Autor> autores = new HashSet<>();
 
     // Getter and Setter
@@ -29,6 +35,15 @@ public class Libro {
 
     public void setAutores(Set<Autor> autores) {
         this.autores = autores;
+    }
+
+    // Relación con Editorial
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
     }
 
     // Atributos (propiedades) de Book
@@ -56,12 +71,15 @@ public class Libro {
         this.isbn = isbn;
     }
 
+    // Volver a generar el método "toString()" para involucrar a la editorial, o
+    // incluir el parámetro "editorial" en este espacio
     @Override
     public String toString() {
         return "Libro{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", isbn='" + isbn + '\'' +
+                ", editorial=" + editorial +
                 ", autores=" + autores +
                 '}';
     }
@@ -79,4 +97,6 @@ public class Libro {
     public int hashCode() {
         return Long.hashCode(getId());
     }
+
+
 }
