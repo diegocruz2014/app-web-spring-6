@@ -3,6 +3,7 @@ package medellin.biblioteca.appwebspring6.domain;
 import jakarta.persistence.*;
 
 import java.awt.print.Book;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,7 @@ public class Autor {
     private String apellidos;
 
     @ManyToMany(mappedBy = "autores")
-    private Set<Libro> libros;
+    private Set<Libro> libros = new HashSet<>();
 
     // Getter and Setter
     // Relación con Book

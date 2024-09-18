@@ -3,6 +3,7 @@ package medellin.biblioteca.appwebspring6.domain;
 import jakarta.persistence.*;
 
 import java.awt.print.Book;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,7 +19,7 @@ public class Libro {
     @JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "id_libro"),
         inverseJoinColumns = @JoinColumn(name = "id_autor"))
     
-    private Set<Autor> autores;
+    private Set<Autor> autores = new HashSet<>();
 
     // Getter and Setter
     // Relación con Autor
