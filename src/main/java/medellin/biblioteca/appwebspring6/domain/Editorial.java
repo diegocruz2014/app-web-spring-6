@@ -1,9 +1,8 @@
 package medellin.biblioteca.appwebspring6.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Editorial {
@@ -17,6 +16,12 @@ public class Editorial {
     private String ciudadEditorial;
     private String departamentoEditorial;
     private String codigoPostalEditorial;
+
+    // Para establecer relación con los libros y teniendo en cuenta que una editorial
+    // publica muchos libros, pero un libro es publicado por una sola editorial, creamos
+    // la siguiente propiedad:
+    @OneToMany(mappedBy = "editorial")
+    private Set<Libro> libros;
 
     // Generar Getters and Setters para todas las propiedades
     // Atributos de Editorial

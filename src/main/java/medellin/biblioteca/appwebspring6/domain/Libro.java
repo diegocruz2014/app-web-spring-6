@@ -14,12 +14,6 @@ public class Libro {
     private String titulo;
     private String isbn;
 
-    // Relación entre lIbro y Editorial (es de muchos libros a una sola editorial)
-    @ManyToOne
-    @JoinColumn(name = "id_editorial")
-
-    private Editorial editorial;
-
     // Relación entre Libro y Autor (es de muchos a muchos)
     @ManyToMany
     @JoinTable(name = "autor_libro", joinColumns = @JoinColumn(name = "id_libro"),
@@ -27,15 +21,12 @@ public class Libro {
 
     private Set<Autor> autores = new HashSet<>();
 
-    // Getter and Setter
-    // Relación con Autor
-    public Set<Autor> getAutores() {
-        return autores;
-    }
+    // Relación entre lIbro y Editorial (es de muchos libros a una sola editorial)
+    @ManyToOne
+    //@JoinColumn(name = "id_editorial")
+    private Editorial editorial;
 
-    public void setAutores(Set<Autor> autores) {
-        this.autores = autores;
-    }
+    // Getter and Setter
 
     // Relación con Editorial
     public Editorial getEditorial() {
@@ -44,6 +35,15 @@ public class Libro {
 
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
+    }
+
+    // Relación con Autor
+    public Set<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autor> autores) {
+        this.autores = autores;
     }
 
     // Atributos (propiedades) de Book

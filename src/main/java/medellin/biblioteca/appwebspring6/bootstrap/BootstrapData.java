@@ -61,15 +61,6 @@ public class BootstrapData implements CommandLineRunner {
         ericSaved.getLibros().add(dddSaved);
         rodSaved.getLibros().add(noEJBSaved);
 
-        // Guardamos la asociación entre autores y libros
-        autorRepository.save(ericSaved);
-        autorRepository.save(rodSaved);
-
-        // Verificar la cuenta de los elementos almacenados
-        System.out.println("En Bootstrap");
-        System.out.println("Cuenta de Autores: " + autorRepository.count());
-        System.out.println("Cuenta de Libros: " + libroRepository.count());
-
         // Editorial 1
         Editorial editorial = new Editorial();
         editorial.setNombreEditorial("Libros Mágicos");
@@ -79,7 +70,27 @@ public class BootstrapData implements CommandLineRunner {
         editorial.setCodigoPostalEditorial("52001");
 
         // Guardamos la editorial creada
-        editorialRepository.save(editorial);
+        Editorial editorialLMSaved = editorialRepository.save(editorial);
+
+        // Se asigna una editorial a libro(s) guardado(s)
+        dddSaved.setEditorial(editorialLMSaved);
+        noEJBSaved.setEditorial(editorialLMSaved);
+
+        // Guardamos la asociación entre autores y libros
+        autorRepository.save(ericSaved);
+        autorRepository.save(rodSaved);
+
+        // Guardamos la asociación entre la editorial y los libros para que
+        // persista a lo largo del tiempo
+        libroRepository.save(dddSaved);
+        libroRepository.save(noEJBSaved);
+
+        // Verificar la cuenta de los elementos almacenados
+        System.out.println("En Bootstrap");
+        System.out.println("Cuenta de Autores: " + autorRepository.count());
+        System.out.println("Cuenta de Libros: " + libroRepository.count());
+
+
 
         // Mostrar la cuenta de editoriales almacenadas
         System.out.println("Cuenta de Editoriales: " + editorialRepository.count());
