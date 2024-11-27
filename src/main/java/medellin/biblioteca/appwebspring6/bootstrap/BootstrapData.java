@@ -60,6 +60,8 @@ public class BootstrapData implements CommandLineRunner {
         // Establecemos la asociación entre autores y libros
         ericSaved.getLibros().add(dddSaved);
         rodSaved.getLibros().add(noEJBSaved);
+        dddSaved.getAutores().add(ericSaved);
+        noEJBSaved.getAutores().add(rodSaved);
 
         // Editorial 1
         Editorial editorial = new Editorial();
